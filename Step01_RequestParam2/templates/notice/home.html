@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>notice/home.html</title>
+</head>
+<body>
+<h3>오늘의 공지 사항</h3>
+<ul>
+	<!-- tmp 는 Notice 객체 이다. -->
+	{% for tmp in object_list %}
+	<li>{{tmp}} ...</li>
+	{% endfor %}
+</ul>
+</body>
+</html>

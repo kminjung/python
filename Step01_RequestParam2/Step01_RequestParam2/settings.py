@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'memo', # 추가된 app 의 이름 명시하기 
     'memberApp',
+    'pageTestApp',
+    'noticeApp',
+    'blogApp',
 ]
 
 MIDDLEWARE_CLASSES = [

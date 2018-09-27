@@ -5,40 +5,41 @@ from django.http.response import HttpResponseRedirect
 
 # member/views.py
 
-# 회원정보 수정 요청처리
+# 회원정보 수정 요청 처리
 def update(request):
-    # 수정할 회원의 정보
-     num=request.POST.get('num')
-     name=request.POST.get('name')
-     addr=request.POST.get('addr')
-     
-     # 수정할 회원의 Member 객체를 불러와서
-     mem=Member.objects.get(num=num)
-     # 수정할 정보를 넣어준다.
-     mem.name=name
-     mem.addr=addr
-     # 저장
-     mem.save()
-     # 응답
-     return render(request, 'member/update.html', {'num':num})
+    #수정할 회원의 정보
+    num=request.POST.get('num')
+    name=request.POST.get('name')
+    addr=request.POST.get('addr')
+    
+    # 수정할 회원의 Member 객체를 불러와서 
+    mem=Member.objects.get(num=num)
+    # 수정할 정보를 넣어준다.
+    mem.name=name
+    mem.addr=addr
+    # 저장
+    mem.save()
+    # 응답
+    return render(request, 'member/update.html', {'num':num})
+       
 
-# 회원정보 수정 폼 요청처리
+# 회원정보 수정 폼 요청 처리
 def updateform(request):
     num=request.GET.get('num')
-    # 수정할 회원의 정보  / SELECT * FROM member WHERE NUM=?
+    # 수정할 회원의 정보
     item=Member.objects.get(num=num) # Member 객체
     return render(request, 'member/updateform.html',\
                   {'item':item})
-    
+
 # 회원 삭제 요청 처리
 def delete(request):
-    # 삭제할 회원의 번호
+    # 삭제할 회원의 번호 
     num=request.GET.get('num')
     # DB 에서 삭제
-    Member.objects.filter(num=num).delete() #filter 는  번호 (num=num)을 추리는 역할
+    Member.objects.filter(num=num).delete()
     # 응답
     return HttpResponseRedirect('/member/list/')
-    
+
 # 회원 추가 요청 처리
 def insert(request):
     #폼 전송된 파라미터 읽어오기 

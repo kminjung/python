@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>blog/home.html</title>
+<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
+</head>
+<body>
+<div class="container">
+	<a href="{% url 'blog_new' %}">새글 추가</a>
+	<h3>Blog home</h3>
+	{% for tmp in object_list %}
+	<div>
+		<h4>{{tmp.title}}</h4>
+		<p>{{tmp.content}}</p>
+	</div>
+	{% endfor %}
+</div>
+</body>
+</html>
